@@ -1,7 +1,9 @@
-package myplaywrightjava;
+
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import com.microsoft.playwright.*;
+
+import myplaywrightjava.AddProductPage;
 
 import org.junit.jupiter.api.*;
 import java.nio.file.Paths;
