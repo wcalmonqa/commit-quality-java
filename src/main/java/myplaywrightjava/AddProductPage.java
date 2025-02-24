@@ -22,10 +22,25 @@ public class AddProductPage {
         page.navigate(URL);
     }
 
-    public void addProduct(String name, String price, String date){
+    public void fillNameInput(String name){
         nameInput.fill(name);
+    }
+
+    public void fillPriceInput(String price){
         priceInput.fill(price);
+    }
+
+    public void fillDateStockedInput(String date){
         dateStockedInput.fill(date);
+    }
+
+    public void clickOnSubmitButton(){
         submitButton.click();
+    }
+    public void addProduct(String name, String price, String date){
+        fillNameInput(name);
+        fillPriceInput(price);
+        fillDateStockedInput(date);
+        clickOnSubmitButton();
     }
 }

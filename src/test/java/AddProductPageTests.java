@@ -16,6 +16,8 @@ public class AddProductPageTests {
   BrowserContext context;
   Page page;
 
+  AddProductPage addProductPage;
+
   @BeforeAll
   static void launchBrowser(){
     playwright = Playwright.create();
@@ -31,6 +33,9 @@ public class AddProductPageTests {
   void createContextAndPage(){
     context = browser.newContext();
     page = context.newPage();
+
+    addProductPage = new AddProductPage(page);
+    addProductPage.navigate();
   }
 
   @AfterEach
@@ -40,19 +45,14 @@ public class AddProductPageTests {
 
   @Test
   void addProduct(){
-    AddProductPage addProductPage = new AddProductPage(page);
-    addProductPage.navigate();
     addProductPage.addProduct("TestProduct", "19.99", "2025-02-20");
     assertThat(page).hasURL("https://commitquality.com/");
     page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("success1.png")));
   }  
 
   @Test
-  void addProduct2(){
-    AddProductPage addProductPage = new AddProductPage(page);
-    addProductPage.navigate();
-    addProductPage.addProduct("TestProduct2", "19.99", "2025-02-20");
-    Assertions.assertEquals( "https://commitquality.com/",page.url());
-    page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("success2.png")));
+  void tryToAddProductWithoutDate(){
+    addProductPage.fillNameInput("Product");
+    addProductPage.fillPriceInput("11.87");
   }
 }
