@@ -1,4 +1,4 @@
-package myplaywrightjava;
+package myplaywrightjava; 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
 
@@ -19,28 +19,13 @@ public class AddProductPage {
     }
 
     public void navigate(){
-        page.navigate(URL);
+        this.page.navigate(URL);
     }
 
-    public void fillNameInput(String name){
+    public void fillProductDataForm(String name, String price, String date){
         nameInput.fill(name);
-    }
-
-    public void fillPriceInput(String price){
         priceInput.fill(price);
-    }
-
-    public void fillDateStockedInput(String date){
         dateStockedInput.fill(date);
-    }
-
-    public void clickOnSubmitButton(){
         submitButton.click();
-    }
-    public void addProduct(String name, String price, String date){
-        fillNameInput(name);
-        fillPriceInput(price);
-        fillDateStockedInput(date);
-        clickOnSubmitButton();
     }
 }
