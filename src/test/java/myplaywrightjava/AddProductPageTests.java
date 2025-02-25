@@ -49,7 +49,7 @@ public class AddProductPageTests {
   void addingProductCorrectly(){
     addProductPage.fillProductDataForm("TestProduct", "19.99", "2025-02-20");
     assertThat(page).hasURL("https://commitquality.com/");
-    page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("success1.png")));
+    page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("test-results/success1.png")));
   }  
 
   @Test
@@ -57,7 +57,7 @@ public class AddProductPageTests {
     addProductPage.fillProductDataForm("", "12.23", "2025-02-20");
     Locator nameErrorMessage = actions.filterLocatorByText(".error-message", "Name"); 
     assertThat(nameErrorMessage).hasText("Name must be at least 2 characters.");
-    page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("emptyNameErrorMessage.png")));
+    page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("test-results/emptyNameErrorMessage.png")));
   }
 
   @Test
@@ -67,7 +67,7 @@ public class AddProductPageTests {
     Locator priceErrorMessage = actions.filterLocatorByText(".error-message", "Price");
 
     assertThat(priceErrorMessage).hasText("Price must not be empty and within 10 digits");
-    page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("emptyPriceErrorMessage.png")));
+    page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("test-results/emptyPriceErrorMessage.png")));
 
   }
 }
