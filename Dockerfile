@@ -8,4 +8,4 @@ RUN mvn -B install -D skipTests --no-transfer-progress
 
 RUN mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
 
-#ENTRYPOINT [ "sh", "-c","mvn test" ]
+ENTRYPOINT [ "sh", "-c","mvn test" ]
