@@ -3,7 +3,9 @@ pipeline {
    stages {
       stage('e2e-tests') {
          steps {
-            sh 'mvn test'
+            sh 'sudo apt-get install -y docker-compose'
+            sh 'docker-compose pull'
+            sh 'docker-compose run --rm e2etests'
          }
       }
    }
