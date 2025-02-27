@@ -1,0 +1,9 @@
+services:
+  e2etests:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    entrypoint: ["sh", "-c", "mvn test"]
+    working_dir:  /e2etests
+    volumes:
+      - ./:/e2etests/
