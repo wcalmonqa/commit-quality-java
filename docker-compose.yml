@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    entrypoint: ["sh", "-c", "mvn test"]
+    entrypoint: ["sh", "-c", "mvn test && allure serve"]
     working_dir:  /e2etests
     volumes:
       - ./:/e2etests/

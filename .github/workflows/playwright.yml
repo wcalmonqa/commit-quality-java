@@ -32,13 +32,17 @@ jobs:
     - name: Run tests
       run: docker-compose run --rm e2etests
 
-    - name: Build test report
-      uses: simple-elf/allure-report-action@v1.7
+    - name: Test here and host elsewhere
+      uses: simple-elf/allure-report-action@master
       if: always()
+      id: allure-report
       with:
-        gh_pages: gh-pages
-        allure_history: allure-history
         allure_results: build/allure-results
+        gh_pages: gh-pages
+        allure_report: allure-report
+        allure_history: allure-history
+        github_repo: wcalmonqa/commit-quality-java/
+        github_repo_owner: wcalmonqa
 
     - name: Publish test report
       uses: peaceiris/actions-gh-pages@v3
