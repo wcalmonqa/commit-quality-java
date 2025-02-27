@@ -20,15 +20,17 @@ jobs:
       run: docker-compose --version || sudo apt-get install -y docker-compose
     - name: Download Docker images
       run: docker-compose pull
-    - name: Run tests
-      run: docker-compose run --rm e2etests
+
     - name: Load test report history
       uses: actions/checkout@v3
       if: always()
       continue-on-error: true
       with:
         ref: gh-pages
-        path: gh-pages
+        path: gh-pages  
+    
+    - name: Run tests
+      run: docker-compose run --rm e2etests
 
     - name: Build test report
       uses: simple-elf/allure-report-action@v1.7
