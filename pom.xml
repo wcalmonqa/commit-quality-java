@@ -13,7 +13,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>17</maven.compiler.release>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
     <allure.version>2.25.0</allure.version>
     <aspectj.version>1.9.21</aspectj.version>
   </properties>
@@ -21,33 +22,22 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.junit</groupId>
-        <artifactId>junit-bom</artifactId>
-        <version>5.11.0</version>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-bom</artifactId>
+        <version>${allure.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-              <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-bom</artifactId>
-            <version>${allure.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
     </dependencies>
   </dependencyManagement>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <!-- Optionally: parameterized tests support -->
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <scope>test</scope>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>7.10.2</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
        <groupId>com.microsoft.playwright</groupId>
@@ -56,7 +46,7 @@
     </dependency>
         <dependency>
         <groupId>io.qameta.allure</groupId>
-        <artifactId>allure-junit5</artifactId>
+        <artifactId>allure-testng</artifactId>
         <scope>test</scope>
     </dependency>
   </dependencies>
@@ -82,6 +72,9 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.3.0</version>
           <configuration>
+            <suiteXmlFiles>
+              <suiteXmlFile>testng.xml</suiteXmlFile>
+            </suiteXmlFiles>    
             <argLine>
               -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
             </argLine>

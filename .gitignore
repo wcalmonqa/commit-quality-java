@@ -2,3 +2,4 @@ target
 .mvn
 test-results
 allure-results
+.vscode

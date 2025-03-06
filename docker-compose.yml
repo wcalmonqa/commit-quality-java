@@ -15,7 +15,14 @@ services:
     volumes:
       - jenkins_home:/var/jenkins_home             # Persiste dados do Jenkins no volume 'jenkins_home'
       - /var/run/docker.sock:/var/run/docker.sock  # Permite que o Jenkins use Docker do host
-
+  e2etests:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    entrypoint: ["sh", "-c", "mvn test"]
+    working_dir:  /e2etests
+    volumes:
+      - ./:/e2etests/
 # Volumes
 volumes:
   jenkins_home:                 # Persistência de dados do Jenkins
