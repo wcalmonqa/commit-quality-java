@@ -1,4 +1,4 @@
-package myplaywrightjava; 
+package myplaywrightjava.pages; 
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
 
